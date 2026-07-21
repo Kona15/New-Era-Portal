@@ -14,11 +14,11 @@ export default async function PortalLayout({ children }: { children: React.React
   }
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen w-full max-w-full overflow-x-hidden">
       <Sidebar userRole={session.role} userName={session.name} />
 
-      <main className="flex-1 lg:ml-64">
-        <div className="pt-16 lg:pt-0 min-h-screen">
+      <main className="flex-1 lg:ml-64 min-w-0 max-w-full overflow-x-hidden">
+        <div className="pt-16 lg:pt-0 min-h-screen w-full max-w-full overflow-x-hidden">
           {children}
         </div>
       </main>

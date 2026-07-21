@@ -8,6 +8,7 @@ import {
   ChevronDown, BarChart2, PiggyBank, Users, BookOpen
 } from "lucide-react";
 import { formatCurrency, formatDate, getMonthName, MONTHS } from "@/lib/utils";
+import { ResponsiveTable } from "@/components/ResponsiveTable";
 import * as XLSX from "xlsx";
 
 interface FinancialYear { id: string; year: number; label: string; isActive: boolean; }
@@ -146,7 +147,7 @@ export default function ReportsPage() {
   const needsMember = REPORT_TYPES.find((r) => r.value === reportType)?.needsMember;
 
   return (
-    <div className="p-4 md:p-8 max-w-6xl mx-auto">
+    <div className="p-4 md:p-8 max-w-6xl mx-auto w-full overflow-x-hidden">
       <div className="mb-8">
         <h1 className="page-title">Reports</h1>
         <p className="page-subtitle">Generate and export financial statements and summaries</p>
@@ -269,7 +270,7 @@ function MemberStatementReport({ data }: { data: Record<string, unknown> }) {
   }, {} as Record<string, number>);
 
   return (
-    <div className="overflow-x-auto">
+    <ResponsiveTable>
       <table className="table w-full text-sm">
         <thead>
           <tr>
@@ -301,7 +302,7 @@ function MemberStatementReport({ data }: { data: Record<string, unknown> }) {
           </tr>
         </tbody>
       </table>
-    </div>
+    </ResponsiveTable>
   );
 }
 
@@ -310,7 +311,7 @@ function AnnualLedgerReport({ data }: { data: Record<string, unknown> }) {
   const allEntries = data.entries as Array<Record<string, unknown>>;
 
   return (
-    <div className="overflow-x-auto">
+    <ResponsiveTable>
       <table className="table text-sm">
         <thead>
           <tr>
@@ -346,7 +347,7 @@ function AnnualLedgerReport({ data }: { data: Record<string, unknown> }) {
           })}
         </tbody>
       </table>
-    </div>
+    </ResponsiveTable>
   );
 }
 
@@ -361,7 +362,7 @@ type SavingsRow = {
 
 function SavingsReport({ data }: { data: Array<Record<string, unknown>> }) {
   return (
-    <div className="overflow-x-auto">
+    <ResponsiveTable>
       <table className="table text-sm">
         <thead>
           <tr>
@@ -389,6 +390,6 @@ function SavingsReport({ data }: { data: Array<Record<string, unknown>> }) {
           })}
         </tbody>
       </table>
-    </div>
+    </ResponsiveTable>
   );
 }

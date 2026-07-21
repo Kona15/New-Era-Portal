@@ -7,6 +7,7 @@ import {
   Loader2, Info, Download, ChevronRight
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ResponsiveTable } from "@/components/ResponsiveTable";
 
 interface PreviewData {
   preview: Array<Record<string, unknown>>;
@@ -117,14 +118,14 @@ export default function ImportPage() {
   }
 
   return (
-    <div className="p-4 md:p-8 max-w-4xl mx-auto">
+    <div className="p-4 md:p-8 max-w-4xl mx-auto w-full overflow-x-hidden">
       <div className="mb-8">
         <h1 className="page-title">Import Data</h1>
         <p className="page-subtitle">Upload historical ledger records from Excel or CSV files</p>
       </div>
 
       {/* Progress Steps */}
-      <div className="flex items-center gap-2 mb-8">
+      <div className="flex flex-wrap items-center gap-2 mb-8">
         {[
           { key: "upload", label: "Upload File" },
           { key: "preview", label: "Review Data" },
@@ -252,7 +253,7 @@ export default function ImportPage() {
           {/* Preview Table */}
           <div>
             <h3 className="section-title mb-3">Preview (first 20 valid rows)</h3>
-            <div className="table-container">
+            <ResponsiveTable>
               <table className="table text-sm">
                 <thead>
                   <tr>
@@ -279,7 +280,7 @@ export default function ImportPage() {
                   ))}
                 </tbody>
               </table>
-            </div>
+            </ResponsiveTable>
             {preview.validRows > 20 && (
               <p className="text-slate-400 text-sm mt-2 text-center">
                 Showing 20 of {preview.validRows} valid rows

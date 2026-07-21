@@ -96,16 +96,16 @@ export default function AdminDashboard({ session }: { session: JWTPayload }) {
   const fin = data?.financials;
 
   return (
-    <div className="p-4 md:p-8 max-w-7xl mx-auto">
+    <div className="p-4 md:p-8 max-w-7xl mx-auto w-full overflow-x-hidden">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 flex-wrap">
         <div>
           <h1 className="page-title">Dashboard</h1>
           <p className="page-subtitle">
             Welcome back, {session.name} · {data?.activeYear?.label || "No active year"}
           </p>
         </div>
-        <div className="flex gap-3">
+        <div className="flex flex-wrap gap-3">
           <Link href="/members/new" className="btn-primary btn-sm">
             <Plus className="w-4 h-4" /> Add Member
           </Link>
@@ -191,7 +191,7 @@ export default function AdminDashboard({ session }: { session: JWTPayload }) {
       {/* Quick Actions */}
       <section className="mb-8">
         <h2 className="section-title mb-4">Quick Actions</h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3">
           {[
             { href: "/members/new", icon: <Users className="w-5 h-5" />, label: "Add Member" },
             { href: "/ledger", icon: <BookOpen className="w-5 h-5" />, label: "Edit Ledger" },

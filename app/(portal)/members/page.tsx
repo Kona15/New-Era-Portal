@@ -8,6 +8,7 @@ import {
   Eye, Edit, Key, Trash2, UserCheck, UserX, Loader2
 } from "lucide-react";
 import { formatDate, cn } from "@/lib/utils";
+import { ResponsiveTable } from "@/components/ResponsiveTable";
 
 interface Member {
   id: string;
@@ -157,7 +158,7 @@ export default function MembersPage() {
   }
 
   return (
-    <div className="p-4 md:p-8 max-w-7xl mx-auto">
+    <div className="p-4 md:p-8 max-w-7xl mx-auto w-full overflow-x-hidden">
       <ConfirmDialog 
   {...confirm} 
   onConfirm={confirm.action} 
@@ -165,7 +166,7 @@ export default function MembersPage() {
 />
 
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 flex-wrap">
         <div>
           <h1 className="page-title">Members</h1>
           <p className="page-subtitle">{meta.total} total members</p>
@@ -176,7 +177,7 @@ export default function MembersPage() {
       </div>
 
       {/* Filters */}
-      <div className="card p-4 mb-6 flex flex-col sm:flex-row gap-3">
+      <div className="card p-4 mb-6 flex flex-col sm:flex-row gap-3 flex-wrap">
         <div className="relative flex-1">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
           <input
@@ -184,15 +185,15 @@ export default function MembersPage() {
             placeholder="Search by name, phone, or occupation..."
             value={search}
             onChange={(e) => { setSearch(e.target.value); setPage(1); }}
-            className="input pl-10"
+            className="input pl-10 w-full"
           />
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 w-full sm:w-auto">
           <Filter className="w-4 h-4 text-slate-400 shrink-0" />
           <select
             value={status}
             onChange={(e) => { setStatus(e.target.value); setPage(1); }}
-            className="input w-44"
+            className="input w-full sm:w-44"
           >
             <option value="">All Statuses</option>
             <option value="active">Active</option>
@@ -203,7 +204,7 @@ export default function MembersPage() {
       </div>
 
       {/* Table */}
-      <div className="table-container">
+      <ResponsiveTable>
         {loading ? (
           <div className="flex items-center justify-center py-20">
             <Loader2 className="w-7 h-7 animate-spin text-blue-600" />
@@ -293,11 +294,11 @@ export default function MembersPage() {
             </tbody>
           </table>
         )}
-      </div>
+      </ResponsiveTable>
 
       {/* Pagination */}
       {meta.pages > 1 && (
-        <div className="flex items-center justify-between mt-4 px-1">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mt-4 px-1 flex-wrap">
           <p className="text-sm text-slate-500">
             Showing {(meta.page - 1) * meta.limit + 1}–{Math.min(meta.page * meta.limit, meta.total)} of {meta.total}
           </p>

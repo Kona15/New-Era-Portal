@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { PiggyBank, TrendingUp, BookOpen, User, FileText, Key, RefreshCw } from "lucide-react";
 import { formatCurrency, getMonthName } from "@/lib/utils";
+import { ResponsiveTable } from "@/components/ResponsiveTable";
 import type { JWTPayload } from "@/lib/auth/jwt";
 
 interface MemberStats {
@@ -59,7 +60,7 @@ export default function MemberDashboard({ session }: { session: JWTPayload }) {
   const totals = data?.totals;
 
   return (
-    <div className="p-4 md:p-8 max-w-5xl mx-auto">
+    <div className="p-4 md:p-8 max-w-5xl mx-auto w-full overflow-x-hidden">
       {/* Welcome */}
       <div className="bg-gradient-to-r from-blue-700 to-blue-900 rounded-2xl p-6 text-white mb-8">
         <p className="text-blue-200 text-sm font-medium mb-1">Welcome back</p>
@@ -75,7 +76,7 @@ export default function MemberDashboard({ session }: { session: JWTPayload }) {
           <h2 className="section-title mb-4">
             My Contributions {data?.activeYear ? `— ${data.activeYear.year}` : ""}
           </h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {[
               { icon: <PiggyBank className="w-5 h-5" />, label: "Savings", value: totals.totalSavings, color: "bg-green-50 text-green-700" },
               { icon: <TrendingUp className="w-5 h-5" />, label: "Subscription", value: totals.totalSubscription, color: "bg-blue-50 text-blue-700" },
@@ -106,7 +107,7 @@ export default function MemberDashboard({ session }: { session: JWTPayload }) {
       {data?.recentEntries && data.recentEntries.length > 0 && (
         <section className="mb-8">
           <h2 className="section-title mb-4">Recent Monthly Records</h2>
-          <div className="table-container">
+          <ResponsiveTable>
             <table className="table">
               <thead>
                 <tr>
@@ -129,14 +130,14 @@ export default function MemberDashboard({ session }: { session: JWTPayload }) {
                 ))}
               </tbody>
             </table>
-          </div>
+          </ResponsiveTable>
         </section>
       )}
 
       {/* Quick Links */}
       <section>
         <h2 className="section-title mb-4">Quick Links</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
           {[
             { href: "/ledger", icon: <BookOpen className="w-6 h-6" />, label: "View Ledger", desc: "See all contributions" },
             { href: "/reports", icon: <FileText className="w-6 h-6" />, label: "My Statement", desc: "Download PDF report" },

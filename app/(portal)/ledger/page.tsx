@@ -6,6 +6,7 @@ import Link from "next/link";
 import toast from "react-hot-toast";
 import { BookOpen, Edit, Save, X, ChevronDown, Loader2, Plus } from "lucide-react";
 import { formatCurrency, getMonthName, MONTHS } from "@/lib/utils";
+import { ResponsiveTable } from "@/components/ResponsiveTable";
 
 interface FinancialYear {
   id: string;
@@ -188,8 +189,8 @@ export default function LedgerPage() {
   const selectedMemberName = members.find((m) => m.id === selectedMember)?.fullName || "";
 
   return (
-    <div className="p-4 md:p-8 max-w-7xl mx-auto">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+    <div className="p-4 md:p-8 max-w-7xl mx-auto w-full">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8 flex-wrap">
         <div>
           <h1 className="page-title">Financial Ledger</h1>
           <p className="page-subtitle">View and manage contribution records</p>
@@ -203,7 +204,7 @@ export default function LedgerPage() {
 
       {/* Add Year */}
       {showNewYear && (
-        <div className="card p-4 mb-6 flex items-center gap-3">
+        <div className="card p-4 mb-6 flex flex-wrap items-center gap-3">
           <input
             type="number"
             value={newYear}
@@ -217,7 +218,7 @@ export default function LedgerPage() {
       )}
 
       {/* Selectors */}
-      <div className="card p-4 mb-6 flex flex-col sm:flex-row gap-4">
+      <div className="card p-4 mb-6 flex flex-col sm:flex-row gap-4 flex-wrap">
         <div className="flex-1">
           <label className="label">Financial Year</label>
           <div className="relative">
@@ -278,9 +279,8 @@ export default function LedgerPage() {
           <p className="font-medium">Select a year and member to view the ledger</p>
         </div>
       ) : (
-        <div className="table-container">
-          <div className="overflow-x-auto">
-            <table className="table ledger-table">
+        <ResponsiveTable>
+          <table className="table ledger-table">
               <thead>
                 <tr>
                   <th className="sticky left-0 bg-slate-50 z-10">Month</th>
@@ -374,8 +374,7 @@ export default function LedgerPage() {
                 </tr>
               </tbody>
             </table>
-          </div>
-        </div>
+        </ResponsiveTable>
       )}
     </div>
   );

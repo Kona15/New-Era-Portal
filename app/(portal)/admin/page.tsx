@@ -7,6 +7,7 @@ import {
   Shield, RefreshCw, AlertTriangle
 } from "lucide-react";
 import { formatDateTime } from "@/lib/utils";
+import { ResponsiveTable } from "@/components/ResponsiveTable";
 
 interface ResetRequest {
   id: string;
@@ -92,7 +93,7 @@ export default function AdminPage() {
   }
 
   return (
-    <div className="p-4 md:p-8 max-w-5xl mx-auto">
+    <div className="p-4 md:p-8 max-w-5xl mx-auto w-full overflow-x-hidden">
       <div className="flex items-center gap-3 mb-8">
         <div className="w-10 h-10 bg-blue-100 rounded-xl flex items-center justify-center text-blue-700">
           <Shield className="w-5 h-5" />
@@ -104,7 +105,7 @@ export default function AdminPage() {
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-1 mb-6 bg-slate-100 rounded-xl p-1 w-fit">
+      <div className="flex flex-wrap gap-1 mb-6 bg-slate-100 rounded-xl p-1 w-full sm:w-fit">
         {[
           { key: "resets", label: "Password Resets", icon: <Key className="w-4 h-4" />, count: resets.length },
           { key: "audit", label: "Audit Logs", icon: <Activity className="w-4 h-4" /> },
@@ -199,7 +200,7 @@ export default function AdminPage() {
               <Loader2 className="w-6 h-6 animate-spin text-blue-600" />
             </div>
           ) : (
-            <div className="table-container">
+            <ResponsiveTable>
               <table className="table">
                 <thead>
                   <tr>
@@ -238,7 +239,7 @@ export default function AdminPage() {
                   )}
                 </tbody>
               </table>
-            </div>
+            </ResponsiveTable>
           )}
         </div>
       )}

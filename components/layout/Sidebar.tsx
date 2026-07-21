@@ -88,7 +88,7 @@ export function Sidebar({ userRole, userName }: SidebarProps) {
       <button
         onClick={handleLogout}
         disabled={loggingOut}
-        className="flex items-center gap-3 px-4 py-2.5 w-full rounded-lg text-blue-200 hover:bg-blue-800 hover:text-white transition-colors text-sm font-medium"
+        className="flex items-center gap-3 px-4 py-2.5 w-full rounded-lg text-blue-200 hover:bg-blue-800 hover:text-white transition-colors text-sm font-medium min-h-[44px]"
       >
         <LogOut className="w-4 h-4" />
         {loggingOut ? "Signing out..." : "Sign Out"}
@@ -115,13 +115,13 @@ export function Sidebar({ userRole, userName }: SidebarProps) {
 
       {/* Mobile Header */}
       <div className="lg:hidden fixed top-0 left-0 right-0 z-40 bg-blue-900 h-16 flex items-center justify-between px-4 shadow-lg">
-        <div className="flex items-center gap-3">
-          <Shield className="w-7 h-7 text-white" />
-          <span className="text-white font-bold text-lg">New Era</span>
+        <div className="flex items-center gap-3 min-w-0">
+          <Shield className="w-7 h-7 text-white shrink-0" />
+          <span className="text-white font-bold text-lg truncate">New Era</span>
         </div>
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="p-2 text-white rounded-lg hover:bg-blue-800"
+          className="flex h-11 w-11 items-center justify-center text-white rounded-lg hover:bg-blue-800 min-w-[44px] min-h-[44px]"
           aria-label="Toggle menu"
         >
           {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -135,7 +135,7 @@ export function Sidebar({ userRole, userName }: SidebarProps) {
             className="absolute inset-0 bg-black/50"
             onClick={() => setMobileOpen(false)}
           />
-          <div className="relative w-72 bg-blue-900 flex flex-col h-full pt-16">
+          <div className="relative w-80 max-w-[85vw] bg-blue-900 flex flex-col h-full pt-16">
             <NavLinks />
             <UserSection />
           </div>
