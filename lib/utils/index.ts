@@ -39,7 +39,7 @@ export function sanitizePhone(phone: string): string {
 }
 
 export function generateDefaultPassword(): string {
-  return process.env.DEFAULT_MEMBER_PASSWORD || "NewEra2026!";
+  return process.env.DEFAULT_MEMBER_PASSWORD || "Idanrenewera";
 }
 
 export type ApiResponse<T = unknown> = {

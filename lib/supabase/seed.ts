@@ -16,7 +16,7 @@ const supabase = createClient<Database>(url, serviceKey);
 async function seed() {
   console.log("🌱 Seeding database...");
 
-  const defaultPassword = process.env.DEFAULT_MEMBER_PASSWORD || "NewEra2026!";
+  const defaultPassword = process.env.DEFAULT_MEMBER_PASSWORD || "Idanrenewera";
   const passwordHash = await hash(defaultPassword, {
     memoryCost: 19456,
     timeCost: 2,

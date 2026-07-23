@@ -29,7 +29,7 @@ export async function POST(
       return NextResponse.json({ success: false, error: "Member not found" }, { status: 404 });
     }
 
-    const defaultPassword = process.env.DEFAULT_MEMBER_PASSWORD || "NewEra2026!";
+    const defaultPassword = process.env.DEFAULT_MEMBER_PASSWORD || "Idanrenewera";
     const newHash = await hashPassword(defaultPassword);
 
     const { error: updateError } = await supabaseAdmin

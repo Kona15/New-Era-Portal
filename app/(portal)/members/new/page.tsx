@@ -64,7 +64,7 @@ export default function NewMemberPage() {
           <ArrowLeft className="w-4 h-4" /> Back to Members
         </Link>
         <h1 className="page-title">Add New Member</h1>
-        <p className="page-subtitle">Create a new member account. They will use the default password: <span className="font-mono font-bold">NewEra2026!</span></p>
+        <p className="page-subtitle">Create a new member account. They will use the default password: <span className="font-mono font-bold">Idanrenewera</span></p>
       </div>
 
       <div className="card p-6 md:p-8">
@@ -138,7 +138,7 @@ export default function NewMemberPage() {
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-blue-700">
             <p className="font-semibold mb-1">What happens after creation?</p>
             <ul className="space-y-1 list-disc list-inside text-blue-600">
-              <li>The member receives a default password: <span className="font-mono font-bold">NewEra2026!</span></li>
+              <li>The member receives a default password: <span className="font-mono font-bold">Idanrenewera</span></li>
               <li>On first login, they must immediately change this password</li>
               <li>Their account becomes active after password change</li>
             </ul>

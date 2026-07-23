@@ -45,6 +45,7 @@ export function Sidebar({ userRole, userName }: SidebarProps) {
     try {
       await fetch("/api/auth/logout", { method: "POST" });
       router.push("/login");
+      router.refresh();
     } catch {
       toast.error("Logout failed");
       setLoggingOut(false);
@@ -106,7 +107,7 @@ export function Sidebar({ userRole, userName }: SidebarProps) {
           </div>
           <div>
             <p className="text-white font-bold text-base leading-tight">New Era</p>
-            <p className="text-blue-300 text-xs">Alumni Portal</p>
+            <p className="text-blue-300 text-xs">Idanre New Era Association Portal</p>
           </div>
         </div>
         <NavLinks />

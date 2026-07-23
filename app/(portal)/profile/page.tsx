@@ -17,9 +17,7 @@ const passwordSchema = z
     newPassword: z
       .string()
       .min(8, "At least 8 characters")
-      .regex(/[A-Z]/, "Must include uppercase")
-      .regex(/[0-9]/, "Must include a number")
-      .regex(/[^A-Za-z0-9]/, "Must include a special character"),
+      .regex(/[0-9]/, "Must include a number"),
     confirmPassword: z.string().min(1, "Confirm your new password"),
   })
   .refine((d) => d.newPassword === d.confirmPassword, {
@@ -47,6 +45,7 @@ export default function ProfilePage() {
   const [showPwSection, setShowPwSection] = useState(false);
   const [showCurrent, setShowCurrent] = useState(false);
   const [showNew, setShowNew] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
   const [savingPw, setSavingPw] = useState(false);
 
   const { register, handleSubmit, reset: resetForm, watch, formState: { errors } } = useForm<PwData>({
@@ -56,9 +55,7 @@ export default function ProfilePage() {
   const newPw = watch("newPassword", "");
   const checks = {
     length: newPw.length >= 8,
-    upper: /[A-Z]/.test(newPw),
     number: /[0-9]/.test(newPw),
-    special: /[^A-Za-z0-9]/.test(newPw),
   };
 
   useEffect(() => {
@@ -200,9 +197,7 @@ export default function ProfilePage() {
                 <div className="mt-2 grid grid-cols-2 gap-1">
                   {[
                     { key: "length", label: "8+ characters" },
-                    { key: "upper", label: "Uppercase letter" },
                     { key: "number", label: "Number" },
-                    { key: "special", label: "Special character" },
                   ].map(({ key, label }) => (
                     <div key={key} className="flex items-center gap-1.5 text-xs">
                       <CheckCircle className={`w-3.5 h-3.5 ${checks[key as keyof typeof checks] ? "text-green-500" : "text-slate-300"}`} />
@@ -219,10 +214,13 @@ export default function ProfilePage() {
                 <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
                 <input
                   {...register("confirmPassword")}
-                  type="password"
-                  className="input pl-10"
+                  type={showConfirm ? "text" : "password"}
+                  className="input pl-10 pr-10"
                   placeholder="Repeat new password"
                 />
+                <button type="button" onClick={() => setShowConfirm(!showConfirm)} className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400">
+                  {showConfirm ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </button>
               </div>
               {errors.confirmPassword && <p className="error-text">{errors.confirmPassword.message}</p>}
             </div>

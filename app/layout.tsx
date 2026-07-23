@@ -6,8 +6,8 @@ import { Toaster } from "react-hot-toast";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 export const metadata: Metadata = {
-  title: "New Era Alumni Portal",
-  description: "Alumni Association Management & Financial Transparency Portal",
+  title: "Idanre New Era Association Portal",
+  description: "Idanre New Era Association Management & Financial Transparency Portal",
   manifest: "/manifest.json",
   themeColor: "#1e40af",
   viewport: "width=device-width, initial-scale=1, maximum-scale=1",

@@ -106,7 +106,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const defaultPassword = process.env.DEFAULT_MEMBER_PASSWORD || "NewEra2026!";
+    const defaultPassword = process.env.DEFAULT_MEMBER_PASSWORD || "Idanrenewera";
     const passwordHash = await hashPassword(defaultPassword);
 
     const { data: newRow, error: insertError } = await supabaseAdmin

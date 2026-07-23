@@ -1,4 +1,4 @@
--- New Era Alumni Portal — Supabase Schema
+-- Idanre New Era Association Portal — Supabase Schema
 -- Run this once in your Supabase project's SQL Editor (Project → SQL Editor → New query)
 
 create extension if not exists "pgcrypto";

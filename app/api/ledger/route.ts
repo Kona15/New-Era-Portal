@@ -8,12 +8,12 @@ const upsertSchema = z.object({
   memberId: z.string().uuid(),
   yearId: z.string().uuid(),
   month: z.number().int().min(1).max(12),
-  subscription: z.string().default("0.00"),
-  savings: z.string().default("0.00"),
-  interest: z.string().default("0.00"),
-  loanRepayment: z.string().default("0.00"),
-  socialFund: z.string().default("0.00"),
-  hostingFund: z.string().default("0.00"),
+  subscription: z.union([z.string(), z.number()]).transform((value) => String(value)).default("0.00"),
+  savings: z.union([z.string(), z.number()]).transform((value) => String(value)).default("0.00"),
+  interest: z.union([z.string(), z.number()]).transform((value) => String(value)).default("0.00"),
+  loanRepayment: z.union([z.string(), z.number()]).transform((value) => String(value)).default("0.00"),
+  socialFund: z.union([z.string(), z.number()]).transform((value) => String(value)).default("0.00"),
+  hostingFund: z.union([z.string(), z.number()]).transform((value) => String(value)).default("0.00"),
   notes: z.string().optional().nullable(),
 });
 

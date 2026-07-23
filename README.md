@@ -1,6 +1,6 @@
-# New Era Alumni Association Portal
+# Idanre New Era Association Portal
 
-A production-ready web application for managing an alumni association and providing transparent financial records to members.
+A production-ready web application for managing the Idanre New Era Association and providing transparent financial records to members.
 
 ---
 
@@ -74,7 +74,7 @@ SUPABASE_URL=https://your-project-ref.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
 
 JWT_SECRET=change-this-to-a-very-long-random-string-in-production
-DEFAULT_MEMBER_PASSWORD=NewEra2026!
+DEFAULT_MEMBER_PASSWORD=Idanrenewera
 NODE_ENV=development
 ```
 
@@ -85,7 +85,7 @@ npm run db:seed
 ```
 
 This creates:
-- Admin account: phone `08000000000`, password `NewEra2026!`
+- Admin account: phone `08000000000`, password `Idanrenewera`
 - Current financial year
 
 ### 7. Start the Development Server
@@ -102,7 +102,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 1. Go to `http://localhost:3000/login`
 2. Phone: `08000000000`
-3. Password: `NewEra2026!`
+3. Password: `Idanrenewera`
 4. You will be redirected to set a new password immediately
 
 ---
@@ -111,7 +111,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 | Role | Phone | Default Password |
 |------|-------|-----------------|
-| Administrator | 08000000000 | NewEra2026! |
+| Administrator | 08000000000 | Idanrenewera |
 
 > **Security Note:** Change the default admin password immediately after your first login.
 
@@ -124,7 +124,7 @@ Open [http://localhost:3000](http://localhost:3000).
 1. Log in as Administrator
 2. Go to **Members → Add Member**
 3. Enter the member's full name and phone number
-4. New member gets default password `NewEra2026!`
+4. New member gets default password `Idanrenewera`
 5. Share phone + default password with the member — they must change it on first login
 
 ### Managing the Ledger
@@ -264,4 +264,4 @@ The application is designed to work inside WhatsApp WebView:
 
 ## License
 
-MIT © New Era Alumni Association
+MIT © Idanre New Era Association

@@ -50,6 +50,7 @@ export default function LoginPage() {
       } else {
         router.push("/dashboard");
       }
+      router.refresh();
     } catch {
       toast.error("Network error. Please try again.");
     } finally {
@@ -89,7 +90,7 @@ export default function LoginPage() {
             <Shield className="w-10 h-10 text-white" />
           </div>
           <h1 className="text-3xl font-bold text-white">New Era</h1>
-          <p className="text-blue-200 mt-1 text-base">Alumni Association Portal</p>
+          <p className="text-blue-200 mt-1 text-base">Idanre New Era Association Portal</p>
         </div>
 
         {/* Login Card */}
@@ -157,7 +158,7 @@ export default function LoginPage() {
 
               <div className="mt-6 bg-blue-50 rounded-lg p-4 text-sm text-blue-700">
                 <p className="font-semibold mb-1">First time logging in?</p>
-                <p>Use your phone number and the default password: <span className="font-mono font-bold">NewEra2026!</span></p>
+                <p>Use your phone number and the default password: <span className="font-mono font-bold">Idanrenewera</span></p>
                 <p className="mt-1">You will be asked to set a new password immediately.</p>
               </div>
             </>
@@ -206,7 +207,7 @@ export default function LoginPage() {
         </div>
 
         <p className="text-center text-blue-300 text-sm mt-6">
-          © {new Date().getFullYear()} New Era Alumni Association
+          © {new Date().getFullYear()} Idanre New Era Association
         </p>
       </div>
     </div>

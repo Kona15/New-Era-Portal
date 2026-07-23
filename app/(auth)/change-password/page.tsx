@@ -14,9 +14,7 @@ const schema = z
     newPassword: z
       .string()
       .min(8, "At least 8 characters")
-      .regex(/[A-Z]/, "Must include an uppercase letter")
-      .regex(/[0-9]/, "Must include a number")
-      .regex(/[^A-Za-z0-9]/, "Must include a special character"),
+      .regex(/[0-9]/, "Must include a number"),
     confirmPassword: z.string().min(1, "Please confirm your new password"),
   })
   .refine((d) => d.newPassword === d.confirmPassword, {
@@ -31,6 +29,7 @@ export default function ChangePasswordPage() {
   const [loading, setLoading] = useState(false);
   const [showCurrent, setShowCurrent] = useState(false);
   const [showNew, setShowNew] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
 
   const {
     register,
@@ -42,9 +41,7 @@ export default function ChangePasswordPage() {
   const newPw = watch("newPassword", "");
   const checks = {
     length: newPw.length >= 8,
-    upper: /[A-Z]/.test(newPw),
     number: /[0-9]/.test(newPw),
-    special: /[^A-Za-z0-9]/.test(newPw),
   };
 
   async function onSubmit(data: FormData) {
@@ -82,7 +79,7 @@ export default function ChangePasswordPage() {
             <Shield className="w-10 h-10 text-white" />
           </div>
           <h1 className="text-3xl font-bold text-white">New Era</h1>
-          <p className="text-blue-200 mt-1">Alumni Association Portal</p>
+          <p className="text-blue-200 mt-1">Idanre New Era Association Portal</p>
         </div>
 
         <div className="bg-white rounded-2xl shadow-2xl p-8">
@@ -146,9 +143,7 @@ export default function ChangePasswordPage() {
                 <div className="mt-2 space-y-1">
                   {[
                     { key: "length", label: "At least 8 characters" },
-                    { key: "upper", label: "One uppercase letter" },
                     { key: "number", label: "One number" },
-                    { key: "special", label: "One special character" },
                   ].map(({ key, label }) => (
                     <div key={key} className="flex items-center gap-2 text-xs">
                       <CheckCircle
@@ -169,10 +164,17 @@ export default function ChangePasswordPage() {
                 <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                 <input
                   {...register("confirmPassword")}
-                  type="password"
+                  type={showConfirm ? "text" : "password"}
                   placeholder="Repeat new password"
-                  className="input pl-11"
+                  className="input pl-11 pr-11"
                 />
+                <button
+                  type="button"
+                  onClick={() => setShowConfirm(!showConfirm)}
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400"
+                >
+                  {showConfirm ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                </button>
               </div>
               {errors.confirmPassword && (
                 <p className="error-text">{errors.confirmPassword.message}</p>

@@ -217,7 +217,7 @@ export default function ReportsPage() {
         <div id="report-output" className="card p-6 md:p-8">
           {/* Report Header */}
           <div className="text-center mb-8 pb-6 border-b-2 border-blue-900">
-            <h2 className="text-2xl font-bold text-blue-900 uppercase tracking-wide">New Era Alumni Association</h2>
+            <h2 className="text-2xl font-bold text-blue-900 uppercase tracking-wide">Idanre New Era Association</h2>
             <p className="text-slate-500 mt-1">{REPORT_TYPES.find((r) => r.value === reportType)?.label}</p>
             {selectedYearData ? <p className="text-slate-600 font-medium mt-1">{selectedYearData.label}</p> : null}
             {reportType === "member-statement" && selectedMemberData ? (

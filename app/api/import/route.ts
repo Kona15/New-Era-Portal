@@ -106,7 +106,7 @@ export async function POST(request: NextRequest) {
     // so we process rows sequentially and collect any failures.
     let successCount = 0;
     const failedRows: { row: unknown; reason: string }[] = [];
-    const defaultPassword = process.env.DEFAULT_MEMBER_PASSWORD || "NewEra2026!";
+    const defaultPassword = process.env.DEFAULT_MEMBER_PASSWORD || "Idanrenewera";
     const yearCache = new Map<number, string>();
     const memberCache = new Map<string, string>();
 
