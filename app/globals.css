@@ -72,7 +72,7 @@
     @apply text-sm font-medium text-slate-500;
   }
   .table-container {
-    @apply w-full max-w-full overflow-x-auto overflow-y-hidden rounded-xl border border-slate-200;
+    @apply w-full max-w-full overflow-x-auto overflow-y-auto rounded-xl border border-slate-200;
     position: relative;
     -webkit-overflow-scrolling: touch;
     overscroll-behavior-x: contain;
@@ -92,6 +92,12 @@
   }
   .table th {
     @apply bg-slate-50 text-left font-semibold text-slate-600 border-slate-200;
+    position: sticky;
+    top: 0;
+    z-index: 15;
+  }
+  .table thead th:first-child {
+    z-index: 25;
   }
   .table tr:last-child td {
     @apply border-b-0;

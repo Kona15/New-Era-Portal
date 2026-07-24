@@ -283,7 +283,7 @@ export default function LedgerPage() {
           <table className="table ledger-table">
               <thead>
                 <tr>
-                  <th className="sticky left-0 bg-slate-50 z-10">Month</th>
+                  <th className="sticky left-0 bg-slate-50 z-20">Month</th>
                   {FIELDS.map((f) => <th key={f.key}>{f.label}</th>)}
                   <th>Row Total</th>
                   {isAdmin && <th>Action</th>}
